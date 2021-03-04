@@ -3,7 +3,7 @@
 # **Covid-19 Immunization registry Tracker System Design**
 
 <p style="text-align: right">
-Last updated: 20.01.2021</p>
+Last updated: 04.03.2021</p>
 
 
 <p style="text-align: right">
@@ -615,59 +615,58 @@ There is currently no way for a tracker to assign a date for the next event base
 ![Program setting](resources/images/image7.png )
 
 
-In addition, there is also a data element that auto-assigns using program rules a recommended date depending on the vaccine product. In order to modify this, the program rule needs to be edited: \
- \
- “Assign a suggested date for next dose AstraZeneca” (there is one rule for each product) \
-“dhis-web-maintenance/#/edit/programSection/programRule/QWOOvnYfKbN” \
- \
-The program rule has two actions \
- \
-Action one: Show warning next to data element “suggested date for next dose” with the text “Next dose should be given at 10 days (PLEASE CONFIRM BEFORE RELEASE)”  \
- \
-Modify this text to match the needs. \
- \
-Action two: Assign value to the data element “suggested date for next dose” with the expression d2:addDays( V{event_date}, 10 )  \
- \
+In addition, there is also a data element that auto-assigns using program rules a recommended date depending on the vaccine product. In order to modify this, the program rule needs to be edited: 
+ 
+ “Assign a suggested date for next dose AstraZeneca” (there is one rule for each product) 
+“dhis-web-maintenance/#/edit/programSection/programRule/QWOOvnYfKbN” 
+ 
+The program rule has two actions 
+ 
+Action one: Show warning next to data element “suggested date for next dose” with the text “Next dose should be given at 10 days”  
+ 
+Modify this text to match the needs. 
+ 
+Action two: Assign value to the data element “suggested date for next dose” with the expression d2:addDays( V{event_date}, 10 )  
+ 
 Modify the number 10 with the number of days that needs to be assigned to the available vaccine. 
 
 
-#### **Last dose**
+#### Last dose
 
-There is currently yes/no data element called “Last dose” this element is used to help indicators know when a product has completed its immunization schedule. Currently, all products have two doses, and therefore, we have set it up so that once a person is given a second dose, the DE “Last dose” is automatically checked as “Yes”. We have also hidden this DE for the first dose. \
+There is currently yes/no data element called “Last dose” this element is used to help indicators know when a product has completed its immunization schedule. Currently, all products have two doses, and therefore, we have set it up so that once a person is given a second dose, the DE “Last dose” is automatically checked as “Yes”. We have also hidden this DE for the first dose. 
  \
-To modify this warning, edit the program rule: \
- “If this is the second dose, mark it as "last dose" for all vaccine products” \
- \
-dhis-web-maintenance/#/edit/programSection/programRule/PJjKiFrvfuN \
- \
-The expression: \
-d2:hasValue( 'Dose_number' ) == true && #{Dose_number} == 'DOSE2' \
- \
-Indicates that if a clerk selects that the doses number given is the second dose, then it triggers an “assign value” action which adds the value “true” to the data element “Last dose” \
- \
+To modify this warning, edit the program rule: 
+ “If this is the second dose, mark it as "last dose" for all vaccine products” 
+ 
+dhis-web-maintenance/#/edit/programSection/programRule/PJjKiFrvfuN 
+ 
+The expression: 
+d2:hasValue( 'Dose_number' ) == true && #{Dose_number} == 'DOSE2'
+ 
+Indicates that if a clerk selects that the doses number given is the second dose, then it triggers an “assign value” action which adds the value “true” to the data element “Last dose” 
+ 
 To modify this, edit the expression to filter out the vaccine products not in use/with a different schedule.
 
 
-### Total number of doses \
+### Total number of doses 
 
 
 The data element “Total doses required for this vaccine product” is an autofilled data element which displays the amount of doses required for this vaccine product’s vaccination schedule. Currently, all vaccines have two doses in their schedule. However, there is an individual rule for each vaccine in case this changes in the future: \
- \
+ 
 To modify, edit the corresponding rule: Assign dose number to NAMEOFPRODUCT
 
- \
- \
-And the expression: \
-d2:hasValue( 'Vaccine_type' )  == true && #{Vaccine_type} == 'astrazeneca' \
- \
+ 
+ 
+And the expression: 
+d2:hasValue( 'Vaccine_type' )  == true && #{Vaccine_type} == 'astrazeneca' 
+ 
 If the program matches the filter, then the action will assign value to the “Total doses” data element. Currently, all rules assign the value “2” and hides the option for a third dose.
 
 
-###  \
-Access Level
+###  Access Level
 
-The program has been set up as a “protected” program, meaning that users are able to search in other org units beyond the ones they have rights to, but if they want to access records in a different facility, they must use the “breaking the glass” function and not down why they are accessing records in a different organisation unit.  \
- \
+The program has been set up as a “protected” program, meaning that users are able to search in other org units beyond the ones they have rights to, but if they want to access records in a different facility, they must use the “breaking the glass” function and not down why they are accessing records in a different organisation unit.  
+ 
 Note that the breaking the glass feature is not supported in Android 2.3 and android users are unable to search other organisation units when the program is set as protected. [See documentation](https://docs.dhis2.org/2.35/en/dhis2_android_capture_app/programs.html#breaking-the-glass)
 
 
@@ -675,8 +674,8 @@ Note that the breaking the glass feature is not supported in Android 2.3 and and
 
 The enrollment date equals the ‘Registration date’. It is intended that the user enters the enrollment date as the person is being enrolled into the Immunization Registry program. In the majority of cases, the enrollment date will coincide with the date for the first vaccination unless clients are enrolled in advance in the vaccination registry. 
 
-As the program uses the Date of Birth to calculate program indicators, it is configured as mandatory. If a person does not know their date of birth, the checkbox “Date of birth is estimated” can be used and their approximate age or an approximate DoB should be entered. \
- \
+As the program uses the Date of Birth to calculate program indicators, it is configured as mandatory. If a person does not know their date of birth, the checkbox “Date of birth is estimated” can be used and their approximate age or an approximate DoB should be entered. 
+ 
 While the information on enrollment is meant to be completed when a case is first enrolled, attribute values can be updated at any point during an active enrollment if new information becomes available (eg contact information). 
 
 Identifiers 
@@ -690,13 +689,7 @@ The program is configured with two types of unique identifiers. Additional ident
 _Enrollment screenshot_:
 
 
-### 
-
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image4.png "image_tooltip")
-
+![Enrollment Stage](resources/images/image14.png)
 
 
 ### Program Stage 1: Vaccination [repeatable]
@@ -704,16 +697,12 @@ _Enrollment screenshot_:
 
 #### Scheduling events
 
-The stage is configured to ‘Ask the user to create a new event when a stage is completed’, which triggers a pop-up for scheduling the follow-up appointment. ‘Standard interval days’ are currently set to 10 so that the next appointment (event) date is scheduled 10 days from the current event date by default.  \
-Section 1.1 Underlying conditions. \
+The stage is configured to ‘Ask the user to create a new event when a stage is completed’, which triggers a pop-up for scheduling the follow-up appointment. ‘Standard interval days’ are currently set to 10 so that the next appointment (event) date is scheduled 10 days from the current event date by default. 
+
+Section 1.1 Underlying conditions. 
 
 
-
-
-<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image5.png "image_tooltip")
+![Underlying conditions](resources/images/image13.png)
 
 
 The underlying conditions listed here are based on the guidelines for the COVID case surveillance and contact tracing packages, and they also include health states such as pregnancy and lactation. The pregnancy and lactation options  only appear for females. Once one of the underlying conditions (except for pregnancy) are selected, they will remain selected in the following stage (as this is a repeatable stage) and they will be listed in the indicator box. \
@@ -722,28 +711,20 @@ The underlying conditions listed here are based on the guidelines for the COVID 
 
 #### Section 1.2 Pre Immunization Questions
 
-The Pre-Immunization Questions are intended to be completed during each ‘event’, which represents an immunization service.  Based on the answers selected, program rules are triggered to give decision support \
- \
-Currently, the two questions are: \
- \
-**“Has the patient been infected with COVID-19 within the last 90 days”** \
+The Pre-Immunization Questions are intended to be completed during each ‘event’, which represents an immunization service.  Based on the answers selected, program rules are triggered to give decision support 
+ 
+Currently, the two questions are: 
+ 
+**“Has the patient been infected with COVID-19 within the last 90 days”** 
 If the answer to this is yes, a warning appears: The vaccine is recommended for people who have been free from COVID-19 infection for at least 90 days”“
 
-And \
- \
-“Has the patient had a severe allergic reaction (anaphylaxis) or an immediate allergic reaction—even if it was not severe—after getting the first dose of the vaccine” \
- \
-Which only is visible to patients when they are receiving their second (or potentially, third or booster) doses. If yes is selected, it triggers the warning “Please  \
+And 
+“Has the patient had a severe allergic reaction (anaphylaxis) or an immediate allergic reaction—even if it was not severe—after getting the first dose of the vaccine” 
+ 
+Which only is visible to patients when they are receiving their second (or potentially, third or booster) doses. If yes is selected, it triggers the warning “Please  follow the national guidelines for AEFI investigations"
 
 
-<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image6.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image6.png "image_tooltip")
-
-
- \
-
+![alt_text](resources/images/image10.png)
 
 
 #### Section 1.3 Vaccination information 
