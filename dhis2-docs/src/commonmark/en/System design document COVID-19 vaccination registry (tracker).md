@@ -1,6 +1,6 @@
 
 
-# **Covid-19 Immunization registry Tracker System Design (Version 6)**
+# **Covid-19 Immunization registry Tracker System Design**
 
 <p style="text-align: right">
 Last updated: 20.01.2021</p>
@@ -49,11 +49,7 @@ The programme is designed to support clinical/facility-level users, empowering s
 *   Facility staff: Data can also be input into DHIS2 by data entry staff if point-of-care data entry is not feasible. Working lists are designed to support facility staff to monitor patients that need follow up or are overdue according to their vaccination schedule.. 
 *   Facility Managers, District Health Offices and National Program Staff: The data generated through the programme feeds into standardised dashboards which allow to follow vaccine uptake, dropouts, and age/gender/profession disaggregation
 
- \
-** \
- \
- \
-**
+
 
 **Illustrative workflow:**
 
@@ -554,22 +550,13 @@ For the name in the form to reflect the products used in country, you would firs
 
 
 
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-
-![alt_text](images/image1.png "image_tooltip")
+![OptionSet](resources/images/image2.png)
 
 
 
-####   \
-
-
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image2.png "image_tooltip")
- \
-
+![OptionSet](resources/images/image19.png)
+ 
 
 
 #### **Auto Assigning Manufacturers to Names**
