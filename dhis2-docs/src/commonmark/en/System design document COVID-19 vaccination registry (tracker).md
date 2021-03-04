@@ -56,10 +56,10 @@ The programme is designed to support clinical/facility-level users, empowering s
 
 
 ![drawing](resources/images/image16.png)** \
-**
+
 
 Workflows will vary from country to country. The program design should be reviewed and localized by context. For example, the workflow in the figure above assumes that individuals will be registered in DHIS2 when they present themselves at a vaccination site to receive their first dose. An alternative that can be considered is to pre-register eligible individuals into the system as Tracker Entity Instances (e.g. from an existing health worker registry). ** \
-**
+
 
 
 # Tracker Program Configuration 
@@ -559,67 +559,60 @@ For the name in the form to reflect the products used in country, you would firs
  
 
 
-#### **Auto Assigning Manufacturers to Names**
+#### Auto Assigning Manufacturers to Names
 
 Manufacturers are auto-assigned when a vaccine product is selected through program rules based on the vaccine chosen, unless the vaccine has more than one manufacturer available, in which case, a program rule will hide the options which are not relevant and the clerk will need to choose the right manufacturer name.
 
 
-#####  \
-**Auto assign rule:**
+#####  Auto assign rule:
 
 For example, the program rule “Assign name to BioNtech/Pfizer/  assigns the manufacturer BioNtech/Pfizer when “Comirnaty, Tozinameran” is selected. \
- \
-It uses the expression: \
-d2:hasValue( 'Vaccine_type' )  == true && #{Vaccine_type} == ' biontechpfizer' \
+ 
+It uses the expression: 
+d2:hasValue( 'Vaccine_type' )  == true && #{Vaccine_type} == ' biontechpfizer' 
 
 
 And the acton for this program rule is to assign value to the Data Element “Vaccine Manufacturer” as ‘biontechpfizer’ which is the option code for “BioNTech/Pfizer”
 
 
-#####  \
-**Hide options rule:**
+##### **Hide options rule:**
 
- \
-Currently, the only rule like this is: \
-“Assign names/Hide options to AstraZeneca”, as this product has two different manufacturers (AstraZeneca and SK Bio Astra Zeneca).  \
- \
+ 
+Currently, the only rule like this is: 
+“Assign names/Hide options to AstraZeneca”, as this product has two different manufacturers (AstraZeneca and SK Bio Astra Zeneca).  
 This means that instead of assigning a manufacturer, the PR will hide the irrelevant manufacturers and allow the clerk to select one of the two currently available manufacturers.
 
 
 #### **Age alert**
 
- \
+ 
 Depending on the vaccine there can be lower age limits. , If a vaccinator administers a dose to someone outside of that recommended age range, then a warning is issued. To modify this, please amend the program rules:
 
 “If Age is under 18, then warn that Astra Zeneca is recommended for ages 18 and up”
 
-“If Age is under 16, then warn that BiontechPfizer is recommended for ages 16 and up” \
-“If Age is under 18, then warn that Moderna is recommended for ages 18 and up” \
-“If Age is under 18, then warn that Gamaleya is recommended for ages 18 and up” \
-“If Age is under 18, then warn that Sinopharm is recommended for ages 18 and up” \
- \
-The rules all use a similar expression: \
-_ \
-(#{Age_Calculated}   &lt; 18 ) && (#{Vaccine_type} =='astrazeneca')_ \
- \
-Where you would need to modify the number, 18 in this case,  to match the necessary age. \
- \
-The action for these program rules is to show a warning: \
-“This vaccine product is recommended for people 18 and older. .”  \
- \
+“If Age is under 16, then warn that BiontechPfizer is recommended for ages 16 and up” 
+“If Age is under 18, then warn that Moderna is recommended for ages 18 and up” 
+“If Age is under 18, then warn that Gamaleya is recommended for ages 18 and up” 
+“If Age is under 18, then warn that Sinopharm is recommended for ages 18 and up” 
+ 
+The rules all use a similar expression: 
+
+(#{Age_Calculated}   &lt; 18 ) && (#{Vaccine_type} =='astrazeneca')
+
+Where you would need to modify the number, 18 in this case,  to match the necessary age. 
+ 
+The action for these program rules is to show a warning: 
+“This vaccine product is recommended for people 18 and older. .”  
+
 You should also modify this warning to match the most appropriate National Guidelines..
 
 
-####  **Assign a date for next dose** \
- \
-There is currently no way for a tracker to assign a date for the next event based on a data element, so what we have done is configured tracker to automatically autoschedule the next vaccination date 10 days from the first dose, assuming that the most used product would be Astra-zeneca. This must be modified to match the interval used in the country by changing the setting for the vaccination program stage in the maintenance app.  \
- \
+####  Assign a date for next dose
+ 
+There is currently no way for a tracker to assign a date for the next event based on a data element, so what we have done is configured tracker to automatically autoschedule the next vaccination date 10 days from the first dose, assuming that the most used product would be Astra-zeneca. This must be modified to match the interval used in the country by changing the setting for the vaccination program stage in the maintenance app.  
 
 
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image3.png "image_tooltip")
+![Program setting](resources/images/image7.png )
 
 
 In addition, there is also a data element that auto-assigns using program rules a recommended date depending on the vaccine product. In order to modify this, the program rule needs to be edited: \
