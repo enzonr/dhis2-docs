@@ -1,32 +1,5 @@
 
 
-<a href="#gdcalert2">alert2</a>
-<a href="#gdcalert3">alert3</a>
-<a href="#gdcalert4">alert4</a>
-<a href="#gdcalert5">alert5</a>
-<a href="#gdcalert6">alert6</a>
-<a href="#gdcalert7">alert7</a>
-<a href="#gdcalert8">alert8</a>
-<a href="#gdcalert9">alert9</a>
-<a href="#gdcalert10">alert10</a>
-<a href="#gdcalert11">alert11</a>
-<a href="#gdcalert12">alert12</a>
-<a href="#gdcalert13">alert13</a>
-<a href="#gdcalert14">alert14</a>
-<a href="#gdcalert15">alert15</a>
-<a href="#gdcalert16">alert16</a>
-<a href="#gdcalert17">alert17</a>
-<a href="#gdcalert18">alert18</a>
-<a href="#gdcalert19">alert19</a>
-<a href="#gdcalert20">alert20</a>
-<a href="#gdcalert21">alert21</a>
-<a href="#gdcalert22">alert22</a>
-<a href="#gdcalert23">alert23</a>
-<a href="#gdcalert24">alert24</a>
-
-
-
-
 # **Covid-19 Immunization registry Tracker System Design (Version 6)**
 
 <p style="text-align: right">
@@ -39,10 +12,8 @@ DHIS2 Version compatibility: </p>
 
 <p style="text-align: right">
 Link to demo: <a href="https://who.sandbox.dhis2.org/covax_demo">https://who.sandbox.dhis2.org/covac_demo</a>  \
-U: DEMO \
-P: Demo123! \
-Spreadsheet with Metadata overview: <a href="https://drive.google.com/file/d/1qpZ7m5fDb5dWTQPmuJ1PuJjd2JD1Mlpi/">https://drive.google.com/file/d/1qpZ7m5fDb5dWTQPmuJ1PuJjd2JD1Mlpi/</a></p>
 
+Spreadsheet with Metadata overview: add link
 
 <p style="text-align: right">
  </p>
@@ -88,10 +59,7 @@ The programme is designed to support clinical/facility-level users, empowering s
 
 
 
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href="https://github.com/evbacher/gd2md-html/wiki/Google-Drawings-by-reference">Google Drawings by reference</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![drawing](https://docs.google.com/drawings/d/12345/export/png)** \
+![drawing](dhis2-docs/dhis2-docs/src/commonmark/en/resources/images/image16.png)** \
 **
 
 Workflows will vary from country to country. The program design should be reviewed and localized by context. For example, the workflow in the figure above assumes that individuals will be registered in DHIS2 when they present themselves at a vaccination site to receive their first dose. An alternative that can be considered is to pre-register eligible individuals into the system as Tracker Entity Instances (e.g. from an existing health worker registry). ** \
